@@ -1,68 +1,43 @@
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Daily Tarot — Pink Oracle</title>
-  <link rel="stylesheet" href="styles.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Tarot Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Source Sans 3', sans-serif;
+        background-color: #fdf2f8; /* fallback color */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23fbcfe8' fill-opacity='0.2'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      h1, h2, h3 {
+        font-family: 'Playfair Display', serif;
+      }
+      @keyframes titleFadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-title-fade-in {
+        animation: titleFadeIn 0.8s ease-out forwards;
+        opacity: 0;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
 </head>
-<body>
-  <header class="site-header">
-    <div class="brand">
-      <div class="logo">🔮</div>
-      <h1>Pink Oracle</h1>
-    </div>
-    <p class="tag">Daily Tarot • Yes / No • Three‑Card Reading</p>
-  </header>
-
-  <main class="container">
-    <section id="daily" class="card-section">
-      <h2>Daily Tarot</h2>
-      <p class="muted">Your deterministic daily insight (based on date + user)</p>
-      <div class="controls">
-        <label for="username">Username (optional)</label>
-        <input id="username" placeholder="e.g. scharineeea34" />
-        <button id="daily-btn" class="btn">Reveal Today's Card</button>
-      </div>
-      <div id="daily-result" class="results"></div>
-    </section>
-
-    <section id="yesno" class="card-section">
-      <h2>Yes / No Oracle</h2>
-      <p class="muted">Ask a yes/no question, then draw one card.</p>
-      <div class="controls">
-        <input id="yesno-question" placeholder="Type your yes/no question..." />
-        <button id="yesno-btn" class="btn">Draw</button>
-      </div>
-      <div id="yesno-result" class="results"></div>
-    </section>
-
-    <section id="threecard" class="card-section">
-      <h2>Three‑Card Reading</h2>
-      <p class="muted">Past · Present · Future</p>
-      <div class="controls">
-        <label for="shuffle">Shuffle mode</label>
-        <select id="shuffle">
-          <option value="random">Random</option>
-          <option value="seeded">Deterministic (date + user)</option>
-        </select>
-        <button id="three-btn" class="btn">Reveal Three Cards</button>
-      </div>
-      <div id="three-result" class="results three-cards"></div>
-    </section>
-
-    <section class="about card-section">
-      <h3>Notes</h3>
-      <ul>
-        <li>Daily reading is deterministic by default: same for a given username + date.</li>
-        <li>Cards can show upright or reversed meanings.</li>
-        <li>Replace the art with your images by editing script.js card objects.</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <small>Made with pink vibes • Open-source</small>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
